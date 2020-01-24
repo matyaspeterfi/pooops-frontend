@@ -19,7 +19,7 @@
   <agm-marker-cluster [imagePath]="clusterIcon">
     <agm-marker class="marker"
         *ngFor="let s of shits; let i = index"
-        (markerClick)="clickedMarker(s.label, i)"
+        (markerClick)="markerClicked(s, i)"
         [latitude]="s.lat"
         [longitude]="s.lng"
         [label]="s.label"
@@ -28,7 +28,11 @@
         (dragEnd)="markerDragEnd(s, $event)">
       
       <agm-info-window>
-        <strong>InfoWindow content</strong>
+        <p>{{clickedMarker.name}}</p>
+        <p>Pooped by: a {{clickedMarker.type}}</p>
+        <p>{{clickedMarker.timestamp}}</p>
+        <button (click)="pickUpShit()" class="btn btn-warning">Pick Up</button>
+
       </agm-info-window>
 
     </agm-marker>

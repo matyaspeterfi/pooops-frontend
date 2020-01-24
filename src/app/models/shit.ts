@@ -17,11 +17,11 @@ export class Shit {
     this.type = shit.type;
     this.addedById = shit.addedById;
     this.removedById = shit.removedById;
-    this.timestamp = shit.timeStamp;
+    this.timestamp = shit.timestamp;
     this.lat = shit.lat;
     this.lng = shit.long;
     this.name = shit.name;
-    this.label = '';
-    this.draggable = false;
+    this.label = shit.label;
+    this.draggable = shit.draggable;
   }
 }
