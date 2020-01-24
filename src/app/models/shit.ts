@@ -6,8 +6,10 @@ export class Shit {
   removedById:number;
   timestamp:number;
   lat:number;
-  long:number;
+  lng:number;
   name:string;
+  label:string;
+  draggable:boolean;
 
   constructor(shit) {
     this.id = shit.id;
@@ -17,7 +19,9 @@ export class Shit {
     this.removedById = shit.removedById;
     this.timestamp = shit.timeStamp;
     this.lat = shit.lat;
-    this.long = shit.long;
+    this.lng = shit.long;
     this.name = shit.name;
+    this.label = '';
+    this.draggable = false;
   }
 }

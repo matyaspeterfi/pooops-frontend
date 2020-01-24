@@ -8,7 +8,7 @@
 
   <agm-marker 
     *ngIf="userMarker"
-    class="user"
+    class="marker"
     [latitude]="userMarker.lat"
     [longitude]="userMarker.lng"
     [label]="userMarker.label"
@@ -18,14 +18,14 @@
 
   <agm-marker-cluster [imagePath]="clusterIcon">
     <agm-marker class="marker"
-        *ngFor="let m of markers; let i = index"
-        (markerClick)="clickedMarker(m.label, i)"
-        [latitude]="m.lat"
-        [longitude]="m.lng"
-        [label]="m.label"
-        [markerDraggable]="m.draggable"
+        *ngFor="let s of shits; let i = index"
+        (markerClick)="clickedMarker(s.label, i)"
+        [latitude]="s.lat"
+        [longitude]="s.lng"
+        [label]="s.label"
+        [markerDraggable]="s.draggable"
         [iconUrl]="pooIcon">
-        (dragEnd)="markerDragEnd(m, $event)">
+        (dragEnd)="markerDragEnd(s, $event)">
       
       <agm-info-window>
         <strong>InfoWindow content</strong>
