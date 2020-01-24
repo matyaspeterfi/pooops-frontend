@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { marker } from 'src/app/models/marker';
 import { ShitService } from 'src/app/services/shit-service/shit.service';
 import { Shit } from 'src/app/models/shit';
 import { LocationService } from 'src/app/services/location/location.service';
@@ -12,18 +11,18 @@ import { LocationService } from 'src/app/services/location/location.service';
 export class MapPageComponent implements OnInit {
   latitude: number;
   longitude: number;
-  userMarker: marker;
+  userMarker: Shit;
   mapType = 'roadmap';
-  zoom: number = 16;
+  zoom: number = 12;
   pooIcon: string = '../../assets/images/emojipoo_icon.svg';
   clusterIcon: string = 'https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m';
   userIcon: string = '../../assets/images/userIcon_small.png';
-  markers: marker[]
+  shits: Shit[]
   mapReady = false;
 
 
   constructor(private shit: ShitService, private loc: LocationService) { 
-    this.markers = [];
+    this.shits = [];
   }
 
   ngOnInit() {
@@ -33,43 +32,36 @@ export class MapPageComponent implements OnInit {
     this.displayUser();
 
     this.shit.getShits().subscribe(res => {
-      this.generateMarkers(res);
+      this.shits = res;
+      this.mapReady = true;
     })
-  }
-
-  generateMarkers(shits: Shit[]) {
-    shits.forEach(e => {
-      let newMarker: marker = {
-        lat: e.lat,
-        lng: e.long,
-        label: '',
-        draggable: false
-      }
-      this.markers.push(newMarker);
-    })
-    this.mapReady = true;
   }
 
   clickedMarker(label: string, index: number) {
-    console.log(`clicked the marker: ${label || index}`)
+    console.log(`clicked the marker: ${label && index}`)
   }
 
   mapClicked($event: MouseEvent) {
-    this.markers.push({
-      lat: $event['coords'].lat,
-      lng: $event['coords'].lng,
-      draggable: false
-    });
+      console.log($event['coords'].lat);
+      console.log($event['coords'].lng);
   }
 
   displayUser() {
     this.loc.trackPosition().subscribe(loc => {
-      this.userMarker = {
+      let newShit = {
+        id: 0,
+        thereOrNot: false,
+        type: 'poo',
+        addedById: 0,
+        removedById: 0,
+        timestamp: 0,
         lat: loc.coords.latitude,
-        lng: loc.coords.longitude,
-        label: "",
+        long: loc.coords.longitude,
+        name: '',
+        label: '',
         draggable: false,
       }
+      this.userMarker = new Shit(newShit);
     })
   }
 

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class ShitterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpSentEvent | any> {
-    let token = localStorage.getItem('accessToken');
+    let token = localStorage.getItem('access_token');
     return next.handle(req.clone({ setHeaders: { Authorization: `Bearer ${token}` } }));
   }
 
