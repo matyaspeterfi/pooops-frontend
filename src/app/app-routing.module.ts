@@ -2,13 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { ProfilComponent } from './components/profil/profil.component';
 import { MapPageComponent } from './components/map-page/map-page.component';
 import { AboutComponent } from './components/about/about.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthguardService } from './services/auth-guard/authguard.service';
-
-import { ProfilmockComponent } from './components/profilmock/profilmock.component';
 import { LeaderBoardComponent } from './components/leader-board/leader-board.component';
 
 const routes: Routes = [
@@ -20,7 +19,7 @@ const routes: Routes = [
     children: [{
       path: '', component: MapPageComponent,
     }, {
-      path: 'profil', component: ProfilmockComponent,
+      path: 'profile', component: ProfilComponent,
     }, {
       path: 'leaderboard', component: LeaderBoardComponent,
     }, {
