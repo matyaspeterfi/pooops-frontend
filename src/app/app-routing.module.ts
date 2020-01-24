@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { LeaderboardmockComponent } from './components/leaderboardmock/leaderboardmock.component';
-import { ProfilmockComponent } from './components/profilmock/profilmock.component';
-import { AboutmockComponent } from './components/aboutmock/aboutmock.component';
 import { MapPageComponent } from './components/map-page/map-page.component';
+import { AboutComponent } from './components/about/about.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthguardService } from './services/auth-guard/authguard.service';
 
+import { LeaderboardmockComponent } from './components/leaderboardmock/leaderboardmock.component';
+import { ProfilmockComponent } from './components/profilmock/profilmock.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -24,7 +24,7 @@ const routes: Routes = [
     }, {
       path: 'leaderboard', component: LeaderboardmockComponent,
     }, {
-      path: 'about', component: AboutmockComponent,
+      path: 'about', component: AboutComponent,
     }]
   },
 ];
