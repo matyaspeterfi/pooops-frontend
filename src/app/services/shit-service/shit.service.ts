@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
@@ -27,5 +27,25 @@ export class ShitService {
         return throwError(err);
       })
     );
+  }
+
+  putShit(shitId){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+    headers = headers.append('shitid', `${shitId}`);
+
+    const options = {
+      headers: headers,
+      observe: 'response' as 'body'
+    };
+    const request = this.http.put<any>(`${environment.hostname}/shit/`, {}, options)
+
+    return request.pipe(map(res => {
+      return res;
+    }),catchError(err => {
+      return throwError(err);
+    }))
   }
 }

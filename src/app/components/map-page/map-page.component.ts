@@ -1,3 +1,4 @@
+import { catchError } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShitService } from 'src/app/services/shit-service/shit.service';
 import { Shit } from 'src/app/models/shit';
@@ -19,9 +20,10 @@ export class MapPageComponent implements OnInit {
   userIcon: string = '../../assets/images/userIcon_small.png';
   shits: Shit[]
   mapReady = false;
+  clickedMarker = {};
 
 
-  constructor(private shit: ShitService, private loc: LocationService) { 
+  constructor(private shit: ShitService, private loc: LocationService) {
     this.shits = [];
   }
 
@@ -31,19 +33,16 @@ export class MapPageComponent implements OnInit {
 
     this.displayUser();
 
-    this.shit.getShits().subscribe(res => {
-      this.shits = res;
-      this.mapReady = true;
-    })
+    this.populateShits();
   }
 
-  clickedMarker(label: string, index: number) {
-    console.log(`clicked the marker: ${label && index}`)
+  markerClicked(shit: Shit, index: number) {
+    this.clickedMarker = shit;
   }
 
   mapClicked($event: MouseEvent) {
-      console.log($event['coords'].lat);
-      console.log($event['coords'].lng);
+    console.log($event['coords'].lat);
+    console.log($event['coords'].lng);
   }
 
   displayUser() {
@@ -65,6 +64,13 @@ export class MapPageComponent implements OnInit {
     })
   }
 
+  populateShits(){
+    this.shit.getShits().subscribe(res => {
+      this.shits = res;
+      this.mapReady = true;
+    })
+  }
+
   jumpToUser() {
     this.loc.getPosition()
       .then(res => {
@@ -74,5 +80,13 @@ export class MapPageComponent implements OnInit {
       .catch(err => {
         console.log(err);
       })
+  }
+
+  pickUpShit(){
+    console.log(this.clickedMarker['id']);
+    this.shit.putShit(this.clickedMarker['id']).subscribe(res => {
+      console.log(res);
+      this.populateShits();
+    }),err => catchError(err);
   }
 }
