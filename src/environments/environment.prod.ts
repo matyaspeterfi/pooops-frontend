@@ -1,4 +1,5 @@
 import { Secret } from './../../.secret';
+
 const secret = new Secret()
 
 export const environment = {
