@@ -1,4 +1,8 @@
+import { Secret } from './../../.secret';
+const secret = new Secret()
+
 export const environment = {
-  production: true,
-  hostname: 'http://localhost:3000',
+  agmApiKey : secret.apikey,
+  hostname : secret.hostname,
+  production: true
 };

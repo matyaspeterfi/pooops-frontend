@@ -1,0 +1,26 @@
+<div *ngIf="_user"  class='Container profile'>
+  <div class='row'>
+    <div class='col-12'>
+      <h2>Username:</h2>
+      <p>{{user.username}}</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class='col-12'>
+      <img src="https://i.ytimg.com/vi/7zQTvOzqnqI/hqdefault.jpg" class="card-img-top" alt="placed">
+      <div class="card-body">
+        <h5 class="card-title">Poops placed</h5>
+        <p class="card-text">{{user.shitsReported}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class='col-12'>
+      <img src="http://i.ytimg.com/vi/7-ilywnOZUE/hqdefault.jpg" class="card-img-top" alt="removed">
+      <div class="card-body">
+        <h5 class="card-title">Poops cleaned</h5>
+        <p class="card-text">{{user.shitsRemoved}}</p>
+      </div>
+    </div>
+  </div>
+</div>
