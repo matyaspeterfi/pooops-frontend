@@ -7,6 +7,7 @@
   (mapClick)="mapClicked($event)">
 
   <agm-marker 
+    *ngIf="userMarker"
     class="user"
     [latitude]="userMarker.lat"
     [longitude]="userMarker.lng"

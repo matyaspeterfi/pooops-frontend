@@ -18,11 +18,13 @@ export class MapPageComponent implements OnInit {
   pooIcon: string = '../../assets/images/emojipoo_icon.svg';
   clusterIcon: string = 'https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m';
   userIcon: string = '../../assets/images/userIcon_small.png';
-  markers: marker[] = []
-  mapReady: boolean;
+  markers: marker[]
+  mapReady = false;
 
 
-  constructor(private shit: ShitService, private loc: LocationService) { }
+  constructor(private shit: ShitService, private loc: LocationService) { 
+    this.markers = [];
+  }
 
   ngOnInit() {
 
