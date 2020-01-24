@@ -1,0 +1,51 @@
+.row, .my-form {
+  width: 100%;
+  margin: 0px;
+  bottom: 0%;
+}
+
+.card-header {
+  margin: 0px;
+  padding: 0px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.form-group {
+  min-height: 62px;
+  margin: 7px;
+}
+
+.col-form-label {
+  padding: 0px;
+}
+
+.form-group > p {
+  margin: 0px 0px 0px 3px;
+  font-size: 4.3vw;
+}
+
+.img-thumbnail {
+  box-shadow: 0px 0px 0px;
+  border: 0px;
+}
+
+.card {
+  margin: 2% auto;
+  width: 95%;
+}
+
+.bottomMessage > h4 {
+  text-align: center;
+  margin: 5% auto;
+  color: red;
+  font-size: 5vw;
+}
+
+.welcomeMessage {
+  margin: 0px auto;
+  text-align: center;
+}
