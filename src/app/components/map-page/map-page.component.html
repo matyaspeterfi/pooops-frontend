@@ -1,10 +1,19 @@
-<agm-map 
+<agm-map *ngIf="mapReady"
   [latitude]="latitude"
   [longitude]="longitude"
   [zoom]="zoom"
   [disableDefaultUI]="false"
   [zoomControl]="false"
   (mapClick)="mapClicked($event)">
+
+  <agm-marker 
+    class="user"
+    [latitude]="userMarker.lat"
+    [longitude]="userMarker.lng"
+    [label]="userMarker.label"
+    [markerDraggable]="userMarker.draggable"
+    [iconUrl]="userIcon">
+  </agm-marker>
 
   <agm-marker-cluster [imagePath]="clusterIcon">
     <agm-marker class="marker"
@@ -20,15 +29,7 @@
       <agm-info-window>
         <strong>InfoWindow content</strong>
       </agm-info-window>
-    
+
     </agm-marker>
   </agm-marker-cluster>
-  
-  <agm-circle [latitude]="lat + 0.3" [longitude]="lng" 
-      [radius]="5000"
-      [fillColor]="'red'"
-      [circleDraggable]="true"
-      [editable]="true">
-  </agm-circle>
-
 </agm-map>
