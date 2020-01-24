@@ -8,8 +8,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthguardService } from './services/auth-guard/authguard.service';
 
-import { LeaderboardmockComponent } from './components/leaderboardmock/leaderboardmock.component';
 import { ProfilmockComponent } from './components/profilmock/profilmock.component';
+import { LeaderBoardComponent } from './components/leader-board/leader-board.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -22,7 +22,7 @@ const routes: Routes = [
     }, {
       path: 'profil', component: ProfilmockComponent,
     }, {
-      path: 'leaderboard', component: LeaderboardmockComponent,
+      path: 'leaderboard', component: LeaderBoardComponent,
     }, {
       path: 'about', component: AboutComponent,
     }]
