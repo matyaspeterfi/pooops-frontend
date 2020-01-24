@@ -9,11 +9,11 @@ import { Shit } from 'src/app/models/shit';
   providedIn: 'root'
 })
 export class ShitService {
+  oldShits: Shit[];
 
   constructor(private http: HttpClient) { }
 
   getShits() {
-
     const request = this.http.get<any>(`${environment.hostname}/shits/`);
     return request.pipe(map(res => {
       let shits:Shit[] = [];
@@ -47,5 +47,21 @@ export class ShitService {
     }),catchError(err => {
       return throwError(err);
     }))
+  }
+
+  getOldShits() {
+    const request = this.http.get<any>(`${environment.hostname}/oldShits`);
+    return request.pipe(map(res => {
+      let oldShits: Shit[] = [];
+      res.forEach(e => {
+        let oldShit = new Shit(e);
+        oldShits.push(oldShit);
+      });
+      return oldShits;
+    }),
+      catchError(err => {
+        return throwError(err);
+      })
+    );
   }
 }

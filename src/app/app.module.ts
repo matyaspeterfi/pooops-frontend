@@ -15,9 +15,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './components/about/about.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-
-import { LeaderboardmockComponent } from './components/leaderboardmock/leaderboardmock.component';
 import { ProfilmockComponent } from './components/profilmock/profilmock.component';
+import { LeaderBoardComponent } from './components/leader-board/leader-board.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +27,8 @@ import { ProfilmockComponent } from './components/profilmock/profilmock.componen
     LoginComponent,
     RegisterComponent,
     AboutComponent,
-    LeaderboardmockComponent,
     ProfilmockComponent,
+    LeaderBoardComponent,
   ],
   imports: [
     BrowserModule,
