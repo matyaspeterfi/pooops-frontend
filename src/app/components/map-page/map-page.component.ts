@@ -1,5 +1,4 @@
-import { catchError } from 'rxjs/operators';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ShitService } from 'src/app/services/shit-service/shit.service';
 import { Shit } from 'src/app/models/shit';
 import { LocationService } from 'src/app/services/location/location.service';
@@ -10,11 +9,11 @@ import { LocationService } from 'src/app/services/location/location.service';
   styleUrls: ['./map-page.component.scss']
 })
 export class MapPageComponent implements OnInit {
-  latitude: number;
-  longitude: number;
+  latitude: number = 50.755117;
+  longitude: number = -2.227547;
   userMarker: Shit;
   mapType = 'roadmap';
-  zoom: number = 12;
+  zoom: number = 15;
   pooIcon: string = '../../assets/images/emojipoo_icon.svg';
   clusterIcon: string = 'https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m';
   userIcon: string = '../../assets/images/userIcon_small.png';
