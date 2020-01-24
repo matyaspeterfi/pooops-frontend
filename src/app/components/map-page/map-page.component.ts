@@ -20,7 +20,9 @@ export class MapPageComponent implements OnInit {
   userIcon: string = '../../assets/images/userIcon_small.png';
   shits: Shit[]
   mapReady = false;
-  clickedMarker = {};
+  clickedMarker:any = {};
+  minutesAgo:number = 0;
+  previousInfo:any;
 
 
   constructor(private shit: ShitService, private loc: LocationService) {
@@ -34,10 +36,18 @@ export class MapPageComponent implements OnInit {
     this.displayUser();
 
     this.populateShits();
+
   }
 
-  markerClicked(shit: Shit, index: number) {
-    this.clickedMarker = shit;
+  markerClicked(shit: Shit, infoWindow) {
+    this.clickedMarker = new Shit(shit);
+    this.minutesAgo = this.clickedMarker.minutesAgo();
+    console.log(typeof infoWindow);
+    if(this.previousInfo) {
+      this.previousInfo.close()
+    }
+    this.previousInfo = infoWindow;
+    
   }
 
   mapClicked($event: MouseEvent) {
@@ -83,10 +93,8 @@ export class MapPageComponent implements OnInit {
   }
 
   pickUpShit(){
-    console.log(this.clickedMarker['id']);
     this.shit.putShit(this.clickedMarker['id']).subscribe(res => {
-      console.log(res);
       this.populateShits();
-    }),err => catchError(err);
+    })
   }
 }
