@@ -23,7 +23,7 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() { 
-    localStorage.setItem('accessToken', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTU3OTg2ODY5NSwiZXhwIjoxNTgwMzAwNjk1fQ.sJxwXRN9z1vBAiqq_DPlURoJOE3l3hDcCccfGl-vWno');
+    //localStorage.setItem('accessToken', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTU3OTg2ODY5NSwiZXhwIjoxNTgwMzAwNjk1fQ.sJxwXRN9z1vBAiqq_DPlURoJOE3l3hDcCccfGl-vWno');
   }
 
 }

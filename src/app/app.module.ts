@@ -15,23 +15,26 @@ import { ShitterceptorService } from './services/shitterceptor/shitterceptor.ser
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
-import { MockpageComponent } from './components/mockpage/mockpage.component';
 import { MapmockComponent } from './components/mapmock/mapmock.component';
 import { AboutmockComponent } from './components/aboutmock/aboutmock.component';
 import { LeaderboardmockComponent } from './components/leaderboardmock/leaderboardmock.component';
 import { ProfilmockComponent } from './components/profilmock/profilmock.component';
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
     NavbarComponent,
-    MockpageComponent,
     MapmockComponent,
     AboutmockComponent,
     LeaderboardmockComponent,
     ProfilmockComponent,
-    MapPageComponent
+    MapPageComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,10 +43,13 @@ import { ProfilmockComponent } from './components/profilmock/profilmock.componen
     AgmCoreModule.forRoot({
       apiKey: environment.agmApiKey
     }),
-    AgmJsMarkerClustererModule
+    AgmJsMarkerClustererModule,
+    FormsModule,
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ShitterceptorService, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ShitterceptorService, multi: true},
+    FormsModule,
+    HttpClientModule,
   ],
   bootstrap: [AppComponent]
 })

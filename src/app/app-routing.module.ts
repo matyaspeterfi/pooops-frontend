@@ -5,15 +5,18 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { LeaderboardmockComponent } from './components/leaderboardmock/leaderboardmock.component';
 import { ProfilmockComponent } from './components/profilmock/profilmock.component';
 import { AboutmockComponent } from './components/aboutmock/aboutmock.component';
-import { MockpageComponent } from './components/mockpage/mockpage.component';
 import { MapPageComponent } from './components/map-page/map-page.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthguardService } from './services/auth-guard/authguard.service';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: MockpageComponent },
-  { path: 'register', component: MockpageComponent },
-  { path: 'home', component: HomepageComponent, 
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomepageComponent,
+    canActivate: [AuthguardService],
     children: [{
       path: '', component: MapPageComponent,
     }, {
