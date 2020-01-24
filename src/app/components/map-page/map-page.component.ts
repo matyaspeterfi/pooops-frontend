@@ -19,10 +19,13 @@ export class MapPageComponent implements OnInit {
   userIcon: string = '../../assets/images/userIcon_small.png';
   shits: Shit[]
   mapReady = false;
-  clickedMarker:any = {};
-  minutesAgo:number = 0;
-  previousInfo:any;
-
+  clickedMarker: any = {};
+  minutesAgo: number = 0;
+  previousInfo: any;
+  poopname: string;
+  types: any[];
+  selectedtype: any;
+  message: string;
 
   constructor(private shit: ShitService, private loc: LocationService) {
     this.shits = [];
@@ -36,17 +39,27 @@ export class MapPageComponent implements OnInit {
 
     this.populateShits();
 
+    this.shit.getShits().subscribe(res => {
+      this.shits = res;
+      this.mapReady = true;
+    });
+
+    this.types = [
+      { name: 'Dog', value: 'Dog' },
+      { name: 'Cat', value: 'Cat' },
+      { name: 'Horse', value: 'Horse' },
+      { name: 'Bird', value: 'Bird' },
+      { name: 'Human', value: 'Human' }];
   }
 
   markerClicked(shit: Shit, infoWindow) {
     this.clickedMarker = new Shit(shit);
     this.minutesAgo = this.clickedMarker.minutesAgo();
-    console.log(this.previousInfo);
     if(this.previousInfo) {
       this.previousInfo.close()
     }
     this.previousInfo = infoWindow;
-    
+
   }
 
   mapClicked($event: MouseEvent) {
@@ -73,7 +86,7 @@ export class MapPageComponent implements OnInit {
     })
   }
 
-  populateShits(){
+  populateShits() {
     this.shit.getShits().subscribe(res => {
       this.shits = res;
       this.mapReady = true;
@@ -91,10 +104,21 @@ export class MapPageComponent implements OnInit {
       })
   }
 
-  pickUpShit(){
+  pickUpShit() {
     this.shit.putShit(this.clickedMarker['id']).subscribe(res => {
       this.previousInfo = '';
       this.populateShits();
     })
   }
-}
+
+  shitPost() {
+    let newShit = new Shit(this.userMarker);
+    newShit.name = this.poopname;
+    newShit.type = this.selectedtype;
+    newShit.lng = this.userMarker.lng;
+    this.shit.postShit(newShit).subscribe(res => {
+      this.populateShits();
+      this.message = 'Pooop added!'
+    });
+  }
+}  

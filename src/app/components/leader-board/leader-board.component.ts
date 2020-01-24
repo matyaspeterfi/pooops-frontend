@@ -13,7 +13,6 @@ export class LeaderBoardComponent implements OnInit {
   constructor(private getOldShits: ShitService) {
     this.getOldShits.getOldShits()
       .subscribe(data => {
-        console.log(data);
         this.oldestShits = data;
       });
   }

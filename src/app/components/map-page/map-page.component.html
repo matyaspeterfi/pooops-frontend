@@ -38,3 +38,30 @@
     </agm-marker>
   </agm-marker-cluster>
 </agm-map>
+<div class="row">
+<main class="my-form">
+  <div class="row justify-content-center">
+    <div class="card">
+      <form>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Origin</label>
+          </div>
+          <select class="custom-select form-control" id="inputGroupSelect01" [(ngModel)]="selectedtype" name="value">
+            <option *ngFor="let type of types" [ngValue]="type.value">{{type.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="text" name="text" class="form-control" [(ngModel)]="poopname" placeholder="shittyname">
+        </div>
+        <div class="buttons">
+          <button (click)="shitPost()" class="btn btn-warning">Shitpost</button>
+        </div>
+        <div class="message" *ngIf="message">
+          <p>{{message}}</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+</div>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map, catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 import { Shit } from 'src/app/models/shit';
 
 @Injectable({
@@ -64,4 +64,36 @@ export class ShitService {
       })
     );
   }
+
+  postShit(shit): Observable<any> {
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+
+    const options = {
+      headers: headers,
+      observe: 'response' as 'body'
+    };
+
+    const request = this.http.post(`${environment.hostname}/shit`,
+      {
+        shit: {
+          name: shit.name,
+          type: shit.type,
+          lat: shit.lat,
+          long: shit.lng
+        }
+      }, options);
+
+    return request.pipe(map(res => {
+      return res;
+    }),
+      catchError(err => {
+        return throwError(err);
+      })
+    );
+  }
 }
+
