@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomepageComponent } from './components/homepage/homepage.component';
-
 import { LeaderboardmockComponent } from './components/leaderboardmock/leaderboardmock.component';
 import { ProfilmockComponent } from './components/profilmock/profilmock.component';
-import { MapmockComponent } from './components/mapmock/mapmock.component';
 import { AboutmockComponent } from './components/aboutmock/aboutmock.component';
 import { MockpageComponent } from './components/mockpage/mockpage.component';
+import { MapPageComponent } from './components/map-page/map-page.component';
 
 
 const routes: Routes = [
@@ -16,7 +15,7 @@ const routes: Routes = [
   { path: 'register', component: MockpageComponent },
   { path: 'home', component: HomepageComponent, 
     children: [{
-      path: '', component: MapmockComponent
+      path: '', component: MapPageComponent,
     }, {
       path: 'profil', component: ProfilmockComponent,
     }, {
