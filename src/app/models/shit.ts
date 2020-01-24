@@ -24,4 +24,9 @@ export class Shit {
     this.label = shit.label;
     this.draggable = shit.draggable;
   }
+
+  public minutesAgo(){
+    let now = Math.floor(new Date().getTime()/1000);
+    return Math.floor((now - this.timestamp)/60);
+  }
 }
