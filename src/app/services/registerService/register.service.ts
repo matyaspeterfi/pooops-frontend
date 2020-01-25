@@ -12,7 +12,7 @@ export class RegisterService {
 
   constructor( private http: HttpClient) { }
 
-  sendRegister (email: string, password: string, confirmPsw: string): Observable<RegisterResponse> {
+  sendRegister (email: string, username: string, password: string, confirmPsw: string): Observable<RegisterResponse> {
     const options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -24,6 +24,7 @@ export class RegisterService {
     const request = this.http.post(`${environment.hostname}/register`,
       {
         'email': email,
+        'username': username,
         'password': password,
         'confirmPsw': confirmPsw,
       }, options);

@@ -9,13 +9,16 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   email: string;
+  username: string;
   password: string;
   confirmPsw: string;
   emailError: string;
+  usernameError: string;
   passwordError: string;
   confirmPswError: string;
   messageSuccess: string;
   emailStatus: boolean;
+  usernameStatus: boolean;
   passwordStatus: boolean;
   confirmPswStatus: boolean;
 
@@ -35,6 +38,11 @@ export class RegisterComponent implements OnInit {
 
   checkPassword(password: string): boolean {
     return (password !== undefined && password.length > 7);
+  }
+
+  checkUsername(input: string): boolean {
+    const username = /^[A-Za-z0-9]\w{2,6}$/;
+    return (input && username.test(input));
   }
 
   checkIfPasswordNumLatinLetter(input) {
@@ -58,6 +66,13 @@ export class RegisterComponent implements OnInit {
       this.emailStatus = true;
       this.emailError = '';
     }
+    if (this.checkUsername(this.username) === false || !this.username) {
+      this.usernameError = 'Username must be between 3-7 characters';
+      this.usernameStatus = false;
+    } else {
+      this.usernameError = '';
+      this.usernameStatus = true;
+    }
     if (this.checkPassword(this.password) === false) {
       this.passwordError = 'Password must be at least 8 characters';
       this.passwordStatus = false;
@@ -76,7 +91,7 @@ export class RegisterComponent implements OnInit {
       this.confirmPswStatus = true;
     }
     if (this.checkStatus(this.emailStatus, this.passwordStatus, this.confirmPswStatus) === true) {
-      this.registerService.sendRegister(this.email, this.password, this.confirmPsw).subscribe((response) => {
+      this.registerService.sendRegister(this.email, this.username, this.password, this.confirmPsw).subscribe((response) => {
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 1500);

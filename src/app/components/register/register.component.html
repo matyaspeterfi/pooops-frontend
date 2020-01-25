@@ -12,6 +12,10 @@
             <p for="email" class="col-form-label" *ngIf="emailError">{{emailError}}</p>
           </div>
           <div class="form-group">
+            <input type="text" name="username" class="form-control" [(ngModel)]="username" placeholder="Enter username" required>
+            <p for="username" class="col-form-label" *ngIf="usernameError">{{usernameError}}</p>
+          </div>
+          <div class="form-group">
             <input type="password" name="password" class="form-control" [(ngModel)]="password" placeholder="Password" required>
             <p for="password" class="col-form-label" *ngIf="passwordError">{{passwordError}}</p>
           </div>
