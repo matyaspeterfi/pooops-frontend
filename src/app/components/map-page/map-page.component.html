@@ -55,10 +55,19 @@
           <input type="text" name="text" class="form-control" [(ngModel)]="poopname" placeholder="shittyname">
         </div>
         <div class="buttons">
-          <button (click)="shitPost()" class="btn btn-warning">Shitpost</button>
+          <button (click)="shitPost()" class="btn btn-warning lol" data-toggle="modal" data-target="#exampleModalCenter">Shitpost</button>
         </div>
-        <div class="message" *ngIf="message">
-          <p>{{message}}</p>
+        <div class="modal fade bd-example-modal-sm" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              <div class="modal-body">
+                {{message}}
+              </div>
+            </div>
+          </div>
         </div>
       </form>
     </div>

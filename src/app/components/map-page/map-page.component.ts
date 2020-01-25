@@ -116,7 +116,10 @@ export class MapPageComponent implements OnInit {
     newShit.lng = this.userMarker.lng;
     this.shit.postShit(newShit).subscribe(res => {
       this.populateShits();
-      this.message = 'Pooop added!'
+      this.message = 'Thank you for giving a shit!'
     });
+    this.poopname = '';
+    this.selectedtype = '';
+
   }
 }  
