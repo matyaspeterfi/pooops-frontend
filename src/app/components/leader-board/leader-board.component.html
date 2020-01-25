@@ -19,7 +19,7 @@
                 <th scope="col">Poopname</th>
                 <th scope="col">Type</th>
                 <!-- <th scope="col">Reported by</th> -->
-                <th scope="col">Reported on</th>
+                <th scope="col">Reported</th>
               </tr>
             </thead>
             <tbody>
@@ -27,7 +27,7 @@
                 <th scope="row">{{ shit.name }}</th>
                 <td>{{ shit.type }}</td>
                 <!-- <td>{{ shit.addedById }}</td> -->
-                <td>{{ shit.timestamp }}</td>
+                <td>{{ shit.timestamp * 1000 | dateAgo }}</td>
               </tr>
             </tbody>
           </table>
