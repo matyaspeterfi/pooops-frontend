@@ -1,7 +1,17 @@
-.navbar-toggler {
-  border: solid 1px black;
+.navbar-text{
+  color: orange;
+  font-weight: bolder;
 }
 
 .poopimg {
   width: 20vw;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: orange;
+}
+
+button:focus {
+  outline: 1px dotted;
+  outline: none;
 }
