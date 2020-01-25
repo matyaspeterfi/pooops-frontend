@@ -4,7 +4,7 @@ export class User {
   shitsReported: number;
   shitsRemoved: number;
 
-  constructor(id: number, shitsReported:number, shitsRemoved:number, username:string) {
+  constructor(id?: number, shitsReported?:number, shitsRemoved?:number, username?:string) {
     this.id = id;
     this.username = username || `User ${id}`;
     this.shitsReported = shitsReported;
