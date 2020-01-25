@@ -13,12 +13,12 @@
       <div class="card">
         <h1 class="card-header text-center">Poops of Fame</h1>
         <div class="card-body">
-          <table class="table">
+          <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">Poopname</th>
                 <th scope="col">Type</th>
-                <th scope="col">Reported by</th>
+                <!-- <th scope="col">Reported by</th> -->
                 <th scope="col">Reported on</th>
               </tr>
             </thead>
@@ -26,7 +26,7 @@
               <tr *ngFor="let shit of oldestShits">
                 <th scope="row">{{ shit.name }}</th>
                 <td>{{ shit.type }}</td>
-                <td>{{ shit.addedById }}</td>
+                <!-- <td>{{ shit.addedById }}</td> -->
                 <td>{{ shit.timestamp }}</td>
               </tr>
             </tbody>
@@ -36,23 +36,21 @@
     </div>
     <div class="carousel-item">
       <div class="card">
-        <h1 class="card-header text-center">Poops of Fame</h1>
+        <h1 class="card-header text-center">Cleaners of Fame</h1>
         <div class="card-body">
-          <table class="table">
+          <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col">Poopname</th>
-                <th scope="col">Type</th>
-                <th scope="col">Reported by</th>
-                <th scope="col">Reported on</th>
+                <th scope="col">Rank</th>
+                <th scope="col">Username</th>
+                <th scope="col">Collected poops</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let shit of oldestShits">
-                <th scope="row">{{ shit.name }}</th>
-                <td>{{ shit.type }}</td>
-                <td>{{ shit.addedById }}</td>
-                <td>{{ shit.timestamp }}</td>
+              <tr *ngFor="let cleaner of topCleaners; let ndx = index">
+                <th scope="row">{{ndx+1}}</th>
+                <td>{{ cleaner.id.username }}</td>
+                <td>{{ cleaner.id.Total }}</td>
               </tr>
             </tbody>
           </table>
@@ -61,23 +59,21 @@
     </div>
     <div class="carousel-item">
       <div class="card">
-        <h1 class="card-header text-center">Poops of Fame</h1>
+        <h1 class="card-header text-center">Shitterz of Fame</h1>
         <div class="card-body">
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Poopname</th>
-                <th scope="col">Type</th>
-                <th scope="col">Reported by</th>
-                <th scope="col">Reported on</th>
+                <th scope="col">Rank</th>
+                <th scope="col">Username</th>
+                <th scope="col">Reported poops</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let shit of oldestShits">
-                <th scope="row">{{ shit.name }}</th>
-                <td>{{ shit.type }}</td>
-                <td>{{ shit.addedById }}</td>
-                <td>{{ shit.timestamp }}</td>
+              <tr *ngFor="let pooper of topPoopers; let ndx = index">
+                <th scope="row">{{ ndx+1 }}</th>
+                <td>{{ pooper.id.username }}</td>
+                <td>{{ pooper.id.Total }}</td>
               </tr>
             </tbody>
           </table>
