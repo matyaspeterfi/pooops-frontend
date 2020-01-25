@@ -41,7 +41,7 @@ export class MapPageComponent implements OnInit {
   markerClicked(shit: Shit, infoWindow) {
     this.clickedMarker = new Shit(shit);
     this.minutesAgo = this.clickedMarker.minutesAgo();
-    console.log(typeof infoWindow);
+    console.log(this.previousInfo);
     if(this.previousInfo) {
       this.previousInfo.close()
     }
@@ -93,6 +93,7 @@ export class MapPageComponent implements OnInit {
 
   pickUpShit(){
     this.shit.putShit(this.clickedMarker['id']).subscribe(res => {
+      this.previousInfo = '';
       this.populateShits();
     })
   }
