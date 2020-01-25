@@ -2,13 +2,16 @@ agm-map {
   height: 60vh;
 }
 
-
 * {
   font-family: Lato;
 }
 
 a {
   color: darkblue;
+}
+
+.lol{
+  width: 100%;
 }
 
 .marker{
@@ -23,4 +26,16 @@ a {
 
 .my-form, .card {
   width: 100%;
+}
+
+.modal-body {
+  background-color: rgb(104, 55, 20);
+  color: orange;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.input-group-text {
+  background-color: rgb(104, 55, 20);
+  color: orange;
 }
