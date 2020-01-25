@@ -8,11 +8,12 @@ import { AuthService } from 'src/app/services/login-service/login.service';
 })
 export class NavbarComponent implements OnInit {
   @Input() selected: string;
+  @Input() state: string;
   auth: AuthService;
 
   constructor(auth: AuthService) {
     this.auth = auth;
-   }
+  }
 
   ngOnInit() {
   }

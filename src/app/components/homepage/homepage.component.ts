@@ -1,3 +1,4 @@
+import { UserProfileService } from './../../services/user-profile-service/user-profile.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -7,14 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
-
+  user: any;
   selected: string;
+  state: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private _getSingleUser: UserProfileService) {
+    this._getSingleUser.getProfile()
+    .subscribe(data => this.user = data);
     this.router.events.subscribe((event) => {
       if (event) {
-        if (document.location.pathname != '/home') {
-        this.selected = document.location.pathname.split('/home/')[1]
+        if (document.location.pathname == '/home/profile') {
+          this.selected = this.user.username
+        } else if (document.location.pathname != '/home'){
+          this.selected = document.location.pathname.split('/home/')[1]
         } else {
           this.selected = 'pOoops';
         }  
@@ -23,7 +29,5 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() { 
-    //localStorage.setItem('accessToken', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTU3OTg2ODY5NSwiZXhwIjoxNTgwMzAwNjk1fQ.sJxwXRN9z1vBAiqq_DPlURoJOE3l3hDcCccfGl-vWno');
   }
-
 }
