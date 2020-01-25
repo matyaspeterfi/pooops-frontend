@@ -63,8 +63,6 @@ export class MapPageComponent implements OnInit {
   }
 
   mapClicked($event: MouseEvent) {
-    console.log($event['coords'].lat);
-    console.log($event['coords'].lng);
   }
 
   displayUser() {

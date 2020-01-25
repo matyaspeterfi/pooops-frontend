@@ -17,6 +17,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LeaderBoardComponent } from './components/leader-board/leader-board.component';
 import { FormsModule } from '@angular/forms';
 import { ProfilComponent } from './components/profil/profil.component';
+import { DateAgoPipe } from './pipes/date-ago.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProfilComponent } from './components/profil/profil.component';
     RegisterComponent,
     AboutComponent,
     LeaderBoardComponent,
-    ProfilComponent
+    ProfilComponent,
+    DateAgoPipe
   ],
   imports: [
     BrowserModule,
